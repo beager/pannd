@@ -10,13 +10,21 @@ import UIKit
 import SwiftLoader
 import AFNetworking
 
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     let boxOfficeUrl = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json")!
     
     let topDvdUrl = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/e41513a57049e21bc6cf/raw/b490e79be2d21818f28614ec933d5d8f467f0a66/gistfile1.json")!
+    
+    var currentDataSourceUrl: NSURL?
+    
+    var lastSelectedTabBarIndex: Int?
+
+    @IBOutlet weak var tabBar: UITabBar!
+    @IBOutlet weak var topBoxOfficeTabBarItem: UITabBarItem!
+    @IBOutlet weak var topDvdRentalsTabBarItem: UITabBarItem!
     
     var movies: [NSDictionary]?
     
@@ -25,8 +33,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        currentDataSourceUrl = boxOfficeUrl
+        lastSelectedTabBarIndex = 0
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tabBar.delegate = self
         // Do any additional setup after loading the view.
         
         refreshControl = UIRefreshControl()
@@ -35,14 +47,16 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
         SwiftLoader.show(title: "Loading...", animated: true)
         self.loadData()
+        
+        tabBar.selectedItem = topBoxOfficeTabBarItem
     }
     
     func loadData() {
-        let request = NSURLRequest(URL: self.boxOfficeUrl)
+        let request = NSURLRequest(URL: currentDataSourceUrl!)
 
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             
-            self.delay(2, closure: {
+            self.delay(1, closure: {
                 let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
                 if let json = json {
                     self.movies = json["movies"] as? [NSDictionary]
@@ -132,5 +146,21 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
+        if (item.tag == lastSelectedTabBarIndex) {
+            return
+        }
+        if (item.tag == 0) {
+            currentDataSourceUrl = boxOfficeUrl
+        } else if (item.tag == 1) {
+            currentDataSourceUrl = topDvdUrl
+        }
+        movies = []
+        tableView.reloadData()
+        SwiftLoader.show(title: "Loading...", animated: true)
+        loadData()
+        lastSelectedTabBarIndex = item.tag
     }
 }

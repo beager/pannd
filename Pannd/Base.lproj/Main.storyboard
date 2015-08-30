@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="148" sectionHeaderHeight="22" sectionFooterHeight="22" id="F6h-CX-9Ua">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -54,12 +54,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <tabBar contentMode="scaleToFill" id="q16-iw-aUh">
+                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Top Box Office" image="TheaterIcon" id="b42-s9-yHa"/>
+                                    <tabBarItem tag="1" title="Top DVD Rentals" image="DVDIcon" id="cAh-GR-eKr"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="iqU-PY-E74"/>
                     <connections>
+                        <outlet property="tabBar" destination="q16-iw-aUh" id="69v-8r-DEo"/>
                         <outlet property="tableView" destination="F6h-CX-9Ua" id="23v-gq-BlI"/>
+                        <outlet property="topBoxOfficeTabBarItem" destination="b42-s9-yHa" id="mi6-B4-y3q"/>
+                        <outlet property="topDvdRentalsTabBarItem" destination="cAh-GR-eKr" id="bJk-B2-VQd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -132,6 +144,10 @@
             <point key="canvasLocation" x="272" y="615"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="DVDIcon" width="32" height="32"/>
+        <image name="TheaterIcon" width="32" height="32"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
