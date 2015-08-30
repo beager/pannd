@@ -13,7 +13,12 @@ import AFNetworking
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var noResultsView: UIView!
+    @IBOutlet weak var tabBar: UITabBar!
+    @IBOutlet weak var topBoxOfficeTabBarItem: UITabBarItem!
+    @IBOutlet weak var topDvdRentalsTabBarItem: UITabBarItem!
+    @IBOutlet weak var searchBar: UISearchBar!
+
     let boxOfficeUrl = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json")!
     
     let topDvdUrl = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/e41513a57049e21bc6cf/raw/b490e79be2d21818f28614ec933d5d8f467f0a66/gistfile1.json")!
@@ -21,13 +26,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     var currentDataSourceUrl: NSURL?
     
     var lastSelectedTabBarIndex: Int?
-
-    @IBOutlet weak var noResultsView: UIView!
-    @IBOutlet weak var tabBar: UITabBar!
-    @IBOutlet weak var topBoxOfficeTabBarItem: UITabBarItem!
-    @IBOutlet weak var topDvdRentalsTabBarItem: UITabBarItem!
     
-    @IBOutlet weak var searchBar: UISearchBar!
     var movies: [NSDictionary]?
     
     var filteredMovies: [NSDictionary]?
@@ -44,9 +43,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        
         tabBar.delegate = self
-        // Do any additional setup after loading the view.
         
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh...", attributes: [NSForegroundColorAttributeName: UIColor.orangeColor()])

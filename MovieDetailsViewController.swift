@@ -9,11 +9,13 @@
 import UIKit
 import AFNetworking
 
-class MovieDetailsViewController: UIViewController {
+class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var synopsisLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var blurEffectView: UIVisualEffectView!
     
     var movie: Movie!
     
@@ -25,7 +27,12 @@ class MovieDetailsViewController: UIViewController {
         let url = NSURL(string: movie.getHighQualityPoster())
         
         imageView.setImageWithURL(url!)
+        
+        self.title = movie.title
         // Do any additional setup after loading the view.
+        
+        scrollView.contentSize = CGSizeMake(300, 1500)
+        scrollView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,5 +50,13 @@ class MovieDetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        var totalBlurAlpha = scrollView.contentOffset.y / 200
+        if (totalBlurAlpha > 1.0) {
+            totalBlurAlpha = 1.0
+        }
+        blurEffectView.alpha = totalBlurAlpha
+    }
 
 }
