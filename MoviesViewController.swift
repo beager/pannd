@@ -218,11 +218,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         delay(0.1, closure: {
             self.tapGesture.cancelsTouchesInView = false
         })
-        println("end editing")
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        println("begin editing")
         tapGesture.cancelsTouchesInView = true
     }
 }
