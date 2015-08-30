@@ -75,20 +75,19 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             if ((error) != nil) {
                 self.errorView.hidden = false
                 return
+            } else {
+                self.delay(0.5, closure: {
+                    let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
+                    if let json = json {
+                        self.movies = json["movies"] as? [NSDictionary]
+                        self.filteredMovies = self.movies
+                        self.reloadTableViewIfDataExists()
+                    }
+                    
+                    SwiftLoader.hide()
+                    self.refreshControl.endRefreshing()
+                })
             }
-            self.delay(0.5, closure: {
-                let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
-                if let json = json {
-                    self.movies = json["movies"] as? [NSDictionary]
-                    self.filteredMovies = self.movies
-                    self.reloadTableViewIfDataExists()
-                }
-                
-                SwiftLoader.hide()
-                self.refreshControl.endRefreshing()
-            })
-
-            
         }
     }
     
