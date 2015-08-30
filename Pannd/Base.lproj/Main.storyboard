@@ -18,9 +18,14 @@
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" id="vgm-BA-Jvs">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="148" id="gDZ-bH-bLq" customClass="MovieCell" customModule="Pannd" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="148"/>
+                                        <rect key="frame" x="0.0" y="130" width="320" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gDZ-bH-bLq" id="E2h-FT-cZZ">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="148"/>
@@ -69,12 +74,28 @@
                                 <color key="barTintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="selectedImageTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </tabBar>
+                            <view hidden="YES" contentMode="scaleToFill" id="rWH-sl-GWT">
+                                <rect key="frame" x="0.0" y="109" width="320" height="410"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="smk-BG-gi4">
+                                        <rect key="frame" x="8" y="8" width="304" height="394"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Top Box Office" id="iqU-PY-E74"/>
                     <connections>
                         <outlet property="navigationItem" destination="iqU-PY-E74" id="bua-5k-9j4"/>
+                        <outlet property="noResultsView" destination="rWH-sl-GWT" id="PLe-Lx-eCq"/>
+                        <outlet property="searchBar" destination="vgm-BA-Jvs" id="Buf-aW-sqc"/>
                         <outlet property="tabBar" destination="q16-iw-aUh" id="69v-8r-DEo"/>
                         <outlet property="tableView" destination="F6h-CX-9Ua" id="23v-gq-BlI"/>
                         <outlet property="topBoxOfficeTabBarItem" destination="b42-s9-yHa" id="mi6-B4-y3q"/>

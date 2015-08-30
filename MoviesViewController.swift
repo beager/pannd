@@ -10,7 +10,7 @@ import UIKit
 import SwiftLoader
 import AFNetworking
 
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
+class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,13 +22,19 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     var lastSelectedTabBarIndex: Int?
 
+    @IBOutlet weak var noResultsView: UIView!
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var topBoxOfficeTabBarItem: UITabBarItem!
     @IBOutlet weak var topDvdRentalsTabBarItem: UITabBarItem!
     
+    @IBOutlet weak var searchBar: UISearchBar!
     var movies: [NSDictionary]?
     
+    var filteredMovies: [NSDictionary]?
+    
     var refreshControl: UIRefreshControl!
+    
+    var tapGesture: UITapGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +43,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         lastSelectedTabBarIndex = 0
         tableView.dataSource = self
         tableView.delegate = self
+        searchBar.delegate = self
         
         tabBar.delegate = self
         // Do any additional setup after loading the view.
@@ -50,6 +57,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         self.loadData()
         
         tabBar.selectedItem = topBoxOfficeTabBarItem
+        
+        tapGesture = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard"))
+        tapGesture.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(tapGesture)
+    }
+    
+    func hideKeyboard() {
+        tableView.endEditing(true)
     }
     
     func loadData() {
@@ -61,7 +76,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
                 if let json = json {
                     self.movies = json["movies"] as? [NSDictionary]
-                    self.tableView.reloadData()
+                    self.filteredMovies = self.movies
+                    self.reloadTableViewIfDataExists()
                 }
                 
                 SwiftLoader.hide()
@@ -81,7 +97,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func onRefresh() {
-        refreshControl.attributedTitle.
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading data...", attributes: [NSForegroundColorAttributeName: UIColor.orangeColor()])
         self.loadData()
     }
 
@@ -99,7 +115,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Pass the selected object to the new view controller.
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPathForCell(cell)
-        let movie = Movie(movie: movies![indexPath!.row])
+        let movie = Movie(movie: filteredMovies![indexPath!.row])
         
         let movieDetailsViewController = segue.destinationViewController as! MovieDetailsViewController
         movieDetailsViewController.movie = movie
@@ -107,8 +123,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let movies = movies {
-            return movies.count
+        if let filteredMovies = filteredMovies {
+            return filteredMovies.count
         } else {
             return 0
         }
@@ -120,7 +136,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
         
-        let movie = Movie(movie: movies![indexPath.row])
+        let movie = Movie(movie: filteredMovies![indexPath.row])
+        
+        cell.frame = CGRectMake(0, 0, 300.0, 300.0)
         
         cell.titleLabel.text = movie.title
         cell.synopsisLabel.text = movie.synopsis
@@ -160,10 +178,50 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             currentDataSourceUrl = topDvdUrl
         }
         movies = []
-        tableView.reloadData()
+        reloadTableViewIfDataExists()
         SwiftLoader.show(title: "Loading...", animated: true)
         loadData()
         self.title = item.title
         lastSelectedTabBarIndex = item.tag
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        filterContentForSearchText(searchText)
+    }
+    
+    func reloadTableViewIfDataExists() {
+        if (self.filteredMovies?.isEmpty == true) {
+            noResultsView.hidden = false
+        } else {
+            noResultsView.hidden = true
+            self.tableView.reloadData()
+        }
+    }
+    
+    func filterContentForSearchText(searchText: String) {
+        // Filter the array using the filter method
+        if (searchText == "") {
+            self.filteredMovies = self.movies
+        } else {
+            self.filteredMovies = self.movies!.filter({( movie: NSDictionary) -> Bool in
+                let stringMatch = movie["title"]!.rangeOfString(searchText)
+                return stringMatch.length > 0
+            })
+        }
+        reloadTableViewIfDataExists()
+    }
+    
+    // MARK: UISearchBarDelegate methods
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        delay(0.1, closure: {
+            self.tapGesture.cancelsTouchesInView = false
+        })
+        println("end editing")
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        println("begin editing")
+        tapGesture.cancelsTouchesInView = true
     }
 }
