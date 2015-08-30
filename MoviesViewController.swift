@@ -42,6 +42,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view.
         
         refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh...", attributes: [NSForegroundColorAttributeName: UIColor.orangeColor()])
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex:0)
 
@@ -80,6 +81,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func onRefresh() {
+        refreshControl.attributedTitle.
         self.loadData()
     }
 
@@ -161,6 +163,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.reloadData()
         SwiftLoader.show(title: "Loading...", animated: true)
         loadData()
+        self.title = item.title
         lastSelectedTabBarIndex = item.tag
     }
 }
