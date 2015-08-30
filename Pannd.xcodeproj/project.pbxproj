@@ -15,6 +15,7 @@
 		A922BEC81B9293DE00AD619A /* PanndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922BEC71B9293DE00AD619A /* PanndTests.swift */; };
 		A922BED21B92940800AD619A /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922BED11B92940800AD619A /* MoviesViewController.swift */; };
 		A98939781B92AE8100FC2D35 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98939771B92AE8100FC2D35 /* MovieCell.swift */; };
+		A9B2FA161B92B3FF000D6C4E /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B2FA151B92B3FF000D6C4E /* MovieDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		A922BED11B92940800AD619A /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		A98939771B92AE8100FC2D35 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		A9B2FA121B92B23D000D6C4E /* Pannd-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pannd-Bridging-Header.h"; sourceTree = "<group>"; };
+		A9B2FA151B92B3FF000D6C4E /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		B06E7984CDEA0341D984380E /* Pods-Pannd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pannd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pannd/Pods-Pannd.debug.xcconfig"; sourceTree = "<group>"; };
 		CCA062BC121939BFACE9094D /* libPods-Pannd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pannd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				A922BED11B92940800AD619A /* MoviesViewController.swift */,
+				A9B2FA151B92B3FF000D6C4E /* MovieDetailsViewController.swift */,
 			);
 			name = "View Controllers";
 			path = ..;
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9B2FA161B92B3FF000D6C4E /* MovieDetailsViewController.swift in Sources */,
 				A922BEB21B9293DE00AD619A /* AppDelegate.swift in Sources */,
 				A922BED21B92940800AD619A /* MoviesViewController.swift in Sources */,
 				A98939781B92AE8100FC2D35 /* MovieCell.swift in Sources */,
