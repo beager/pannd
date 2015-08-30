@@ -37,6 +37,10 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
         
         movieDetailView.frame = CGRectMake(movieDetailView.frame.origin.x, movieDetailView.frame.origin.y, movieDetailView.frame.width, synopsisLabel.frame.height + 70)
 
+        let lowResUrl = NSURL(string: movie.poster)
+        
+        imageView.setImageWithURL(lowResUrl!)
+        
         let url = NSURL(string: movie.getHighQualityPoster())
         
         imageView.setImageWithURL(url!)

@@ -92,6 +92,20 @@
                                         <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view hidden="YES" contentMode="scaleToFill" id="spU-aI-eey">
+                                        <rect key="frame" x="0.0" y="372" width="320" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There was an error loading data. Please try again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W2v-kA-aIl">
+                                                <rect key="frame" x="7" y="8" width="307" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -100,6 +114,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Top Box Office" id="iqU-PY-E74"/>
                     <connections>
+                        <outlet property="errorView" destination="spU-aI-eey" id="Cb6-Ny-zKZ"/>
                         <outlet property="navigationItem" destination="iqU-PY-E74" id="bua-5k-9j4"/>
                         <outlet property="noResultsView" destination="rWH-sl-GWT" id="PLe-Lx-eCq"/>
                         <outlet property="searchBar" destination="vgm-BA-Jvs" id="Buf-aW-sqc"/>

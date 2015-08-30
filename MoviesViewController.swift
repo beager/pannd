@@ -18,6 +18,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var topBoxOfficeTabBarItem: UITabBarItem!
     @IBOutlet weak var topDvdRentalsTabBarItem: UITabBarItem!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var errorView: UIView!
 
     let boxOfficeUrl = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json")!
     
@@ -67,8 +68,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func loadData() {
         let request = NSURLRequest(URL: currentDataSourceUrl!)
 
+        errorView.hidden = true
+        
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             
+            if ((error) != nil) {
+                self.errorView.hidden = false
+                return
+            }
             self.delay(0.5, closure: {
                 let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
                 if let json = json {
@@ -141,7 +148,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         cell.synopsisLabel.text = movie.synopsis
         cell.posterView.image = UIImage()
         
-        let url = NSURL(string: movie.getHighQualityPoster())
+        let url = NSURL(string: movie.poster)
         
         let imageRequestSuccess = {
             (request : NSURLRequest!, response : NSHTTPURLResponse!, image : UIImage!) -> Void in
