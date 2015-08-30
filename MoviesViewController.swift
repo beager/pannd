@@ -69,7 +69,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             
-            self.delay(1, closure: {
+            self.delay(0.5, closure: {
                 let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
                 if let json = json {
                     self.movies = json["movies"] as? [NSDictionary]
