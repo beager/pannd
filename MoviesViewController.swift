@@ -177,8 +177,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         } else if (item.tag == 1) {
             currentDataSourceUrl = topDvdUrl
         }
-        movies = []
+        filteredMovies = []
         reloadTableViewIfDataExists()
+        searchBar.text = ""
         SwiftLoader.show(title: "Loading...", animated: true)
         loadData()
         self.title = item.title
