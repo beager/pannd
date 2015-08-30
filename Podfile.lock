@@ -20,11 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.6.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - SwiftLoader (0.2.2)
 
 DEPENDENCIES:
   - AFNetworking
+  - SwiftLoader
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
+  SwiftLoader: 9c5e547ae8e00b1c1079139492d6a273c7f73171
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0.beta.3

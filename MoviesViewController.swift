@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftLoader
+import AFNetworking
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -18,21 +20,53 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     var movies: [NSDictionary]?
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let request = NSURLRequest(URL: self.boxOfficeUrl)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
-            if let json = json {
-                self.movies = json["movies"] as? [NSDictionary]
-                self.tableView.reloadData()
-            }
-            
-        }
+        
         tableView.dataSource = self
         tableView.delegate = self
         // Do any additional setup after loading the view.
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex:0)
+
+        SwiftLoader.show(title: "Loading...", animated: true)
+        self.loadData()
+    }
+    
+    func loadData() {
+        let request = NSURLRequest(URL: self.boxOfficeUrl)
+
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            
+            self.delay(2, closure: {
+                let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
+                if let json = json {
+                    self.movies = json["movies"] as? [NSDictionary]
+                    self.tableView.reloadData()
+                }
+                
+                SwiftLoader.hide()
+                self.refreshControl.endRefreshing()
+            })
+
+            
+        }
+    }
+    
+    func delay(delay: Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ), dispatch_get_main_queue(), closure)
+    }
+    
+    func onRefresh() {
+        self.loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +83,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Pass the selected object to the new view controller.
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPathForCell(cell)
-        let movie = movies![indexPath!.row]
+        let movie = Movie(movie: movies![indexPath!.row])
         
         let movieDetailsViewController = segue.destinationViewController as! MovieDetailsViewController
         movieDetailsViewController.movie = movie
@@ -70,14 +104,28 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
         
-        let movie = movies![indexPath.row]
+        let movie = Movie(movie: movies![indexPath.row])
         
-        cell.titleLabel.text = movie["title"] as? String
-        cell.synopsisLabel.text = movie["synopsis"] as? String
+        cell.titleLabel.text = movie.title
+        cell.synopsisLabel.text = movie.synopsis
+        cell.posterView.image = UIImage()
         
-        let url = NSURL(string: movie.valueForKeyPath("posters.detailed") as! String)!
+        let url = NSURL(string: movie.getHighQualityPoster())
         
-        cell.posterView.setImageWithURL(url)
+        let imageRequestSuccess = {
+            (request : NSURLRequest!, response : NSHTTPURLResponse!, image : UIImage!) -> Void in
+            cell.posterView.image = image;
+            cell.posterView.alpha = 0
+            UIView.animateWithDuration(0.4, animations: {
+                cell.posterView.alpha = 1.0
+            })
+        }
+        let imageRequestFailure = {
+            (request : NSURLRequest!, response : NSHTTPURLResponse!, error : NSError!) -> Void in
+            NSLog("imageRequestFailure")
+        }
+
+        cell.posterView.setImageWithURLRequest(NSURLRequest(URL: url!), placeholderImage: nil, success: imageRequestSuccess, failure: imageRequestFailure)
         
         return cell
     }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		918260F84FDE7E8941030ACF /* libPods-Pannd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA062BC121939BFACE9094D /* libPods-Pannd.a */; };
+		569051B8121317ECA1841B57 /* Pods_Pannd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891F6EC5D41B056D9476FD08 /* Pods_Pannd.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A922BEB21B9293DE00AD619A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922BEB11B9293DE00AD619A /* AppDelegate.swift */; };
 		A922BEB71B9293DE00AD619A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A922BEB51B9293DE00AD619A /* Main.storyboard */; };
 		A922BEB91B9293DE00AD619A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A922BEB81B9293DE00AD619A /* Images.xcassets */; };
@@ -16,6 +16,7 @@
 		A922BED21B92940800AD619A /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922BED11B92940800AD619A /* MoviesViewController.swift */; };
 		A98939781B92AE8100FC2D35 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98939771B92AE8100FC2D35 /* MovieCell.swift */; };
 		A9B2FA161B92B3FF000D6C4E /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B2FA151B92B3FF000D6C4E /* MovieDetailsViewController.swift */; };
+		A9B2FA181B92BA25000D6C4E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B2FA171B92BA25000D6C4E /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		0945DFCC54F135E14FDF7BCC /* Pods-Pannd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pannd.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pannd/Pods-Pannd.release.xcconfig"; sourceTree = "<group>"; };
+		891F6EC5D41B056D9476FD08 /* Pods_Pannd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pannd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A922BEAC1B9293DE00AD619A /* Pannd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pannd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A922BEB01B9293DE00AD619A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A922BEB11B9293DE00AD619A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,10 +43,9 @@
 		A922BEC71B9293DE00AD619A /* PanndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanndTests.swift; sourceTree = "<group>"; };
 		A922BED11B92940800AD619A /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		A98939771B92AE8100FC2D35 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
-		A9B2FA121B92B23D000D6C4E /* Pannd-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pannd-Bridging-Header.h"; sourceTree = "<group>"; };
 		A9B2FA151B92B3FF000D6C4E /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
+		A9B2FA171B92BA25000D6C4E /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		B06E7984CDEA0341D984380E /* Pods-Pannd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pannd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pannd/Pods-Pannd.debug.xcconfig"; sourceTree = "<group>"; };
-		CCA062BC121939BFACE9094D /* libPods-Pannd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pannd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				918260F84FDE7E8941030ACF /* libPods-Pannd.a in Frameworks */,
+				569051B8121317ECA1841B57 /* Pods_Pannd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,7 +70,7 @@
 		09FB595602C43FF57EC74FC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CCA062BC121939BFACE9094D /* libPods-Pannd.a */,
+				891F6EC5D41B056D9476FD08 /* Pods_Pannd.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -99,12 +100,12 @@
 			children = (
 				A98939761B92AE4E00FC2D35 /* Views */,
 				A922BED31B92940E00AD619A /* View Controllers */,
+				A9B2FA191B92BA29000D6C4E /* Models */,
 				A922BEB11B9293DE00AD619A /* AppDelegate.swift */,
 				A922BEB51B9293DE00AD619A /* Main.storyboard */,
 				A922BEB81B9293DE00AD619A /* Images.xcassets */,
 				A922BEBA1B9293DE00AD619A /* LaunchScreen.xib */,
 				A922BEAF1B9293DE00AD619A /* Supporting Files */,
-				A9B2FA121B92B23D000D6C4E /* Pannd-Bridging-Header.h */,
 			);
 			path = Pannd;
 			sourceTree = "<group>";
@@ -152,6 +153,14 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		A9B2FA191B92BA29000D6C4E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A9B2FA171B92BA25000D6C4E /* Movie.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		FAE6A0D85806B0F1B1E920F9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +182,7 @@
 				A922BEA91B9293DE00AD619A /* Frameworks */,
 				A922BEAA1B9293DE00AD619A /* Resources */,
 				BA5373B0751D56B5C3D33BAA /* Copy Pods Resources */,
+				EDBDCAFCE9F72B54E775AB01 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -289,6 +299,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pannd/Pods-Pannd-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EDBDCAFCE9F72B54E775AB01 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pannd/Pods-Pannd-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -300,6 +325,7 @@
 				A922BEB21B9293DE00AD619A /* AppDelegate.swift in Sources */,
 				A922BED21B92940800AD619A /* MoviesViewController.swift in Sources */,
 				A98939781B92AE8100FC2D35 /* MovieCell.swift in Sources */,
+				A9B2FA181B92BA25000D6C4E /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

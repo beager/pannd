@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class MovieDetailsViewController: UIViewController {
 
@@ -14,16 +15,16 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var synopsisLabel: UILabel!
     
-    var movie: NSDictionary!
+    var movie: Movie!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleLabel.text = movie["title"] as? String
-        synopsisLabel.text = movie["synopsis"] as? String
-        let url = NSURL(string: movie.valueForKeyPath("posters.original") as! String)!
+        titleLabel.text = movie.title
+        synopsisLabel.text = movie.synopsis
+        let url = NSURL(string: movie.getHighQualityPoster())
         
-        imageView.setImageWithURL(url)
+        imageView.setImageWithURL(url!)
         // Do any additional setup after loading the view.
     }
 
