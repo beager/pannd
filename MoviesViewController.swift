@@ -65,11 +65,16 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
         
         let movie = movies![indexPath.row]
         
-        cell.textLabel?.text = movie["title"] as? String
+        cell.titleLabel.text = movie["title"] as? String
+        cell.synopsisLabel.text = movie["synopsis"] as? String
+        
+        let url = NSURL(string: movie.valueForKeyPath("posters.thumbnail") as! String)!
+        
+        cell.posterView.setImageWithURL(url)
         
         return cell
     }

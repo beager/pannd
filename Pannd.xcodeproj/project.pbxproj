@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		918260F84FDE7E8941030ACF /* libPods-Pannd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA062BC121939BFACE9094D /* libPods-Pannd.a */; };
 		A922BEB21B9293DE00AD619A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922BEB11B9293DE00AD619A /* AppDelegate.swift */; };
 		A922BEB71B9293DE00AD619A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A922BEB51B9293DE00AD619A /* Main.storyboard */; };
 		A922BEB91B9293DE00AD619A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A922BEB81B9293DE00AD619A /* Images.xcassets */; };
 		A922BEBC1B9293DE00AD619A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A922BEBA1B9293DE00AD619A /* LaunchScreen.xib */; };
 		A922BEC81B9293DE00AD619A /* PanndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922BEC71B9293DE00AD619A /* PanndTests.swift */; };
 		A922BED21B92940800AD619A /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922BED11B92940800AD619A /* MoviesViewController.swift */; };
+		A98939781B92AE8100FC2D35 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98939771B92AE8100FC2D35 /* MovieCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0945DFCC54F135E14FDF7BCC /* Pods-Pannd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pannd.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pannd/Pods-Pannd.release.xcconfig"; sourceTree = "<group>"; };
 		A922BEAC1B9293DE00AD619A /* Pannd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pannd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A922BEB01B9293DE00AD619A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A922BEB11B9293DE00AD619A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +39,10 @@
 		A922BEC61B9293DE00AD619A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A922BEC71B9293DE00AD619A /* PanndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanndTests.swift; sourceTree = "<group>"; };
 		A922BED11B92940800AD619A /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		A98939771B92AE8100FC2D35 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		A9B2FA121B92B23D000D6C4E /* Pannd-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pannd-Bridging-Header.h"; sourceTree = "<group>"; };
+		B06E7984CDEA0341D984380E /* Pods-Pannd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pannd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pannd/Pods-Pannd.debug.xcconfig"; sourceTree = "<group>"; };
+		CCA062BC121939BFACE9094D /* libPods-Pannd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pannd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				918260F84FDE7E8941030ACF /* libPods-Pannd.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,13 +64,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09FB595602C43FF57EC74FC5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCA062BC121939BFACE9094D /* libPods-Pannd.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A922BEA31B9293DE00AD619A = {
 			isa = PBXGroup;
 			children = (
-				A922BED31B92940E00AD619A /* View Controllers */,
 				A922BEAE1B9293DE00AD619A /* Pannd */,
 				A922BEC41B9293DE00AD619A /* PanndTests */,
 				A922BEAD1B9293DE00AD619A /* Products */,
+				FAE6A0D85806B0F1B1E920F9 /* Pods */,
+				09FB595602C43FF57EC74FC5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,11 +95,14 @@
 		A922BEAE1B9293DE00AD619A /* Pannd */ = {
 			isa = PBXGroup;
 			children = (
+				A98939761B92AE4E00FC2D35 /* Views */,
+				A922BED31B92940E00AD619A /* View Controllers */,
 				A922BEB11B9293DE00AD619A /* AppDelegate.swift */,
 				A922BEB51B9293DE00AD619A /* Main.storyboard */,
 				A922BEB81B9293DE00AD619A /* Images.xcassets */,
 				A922BEBA1B9293DE00AD619A /* LaunchScreen.xib */,
 				A922BEAF1B9293DE00AD619A /* Supporting Files */,
+				A9B2FA121B92B23D000D6C4E /* Pannd-Bridging-Header.h */,
 			);
 			path = Pannd;
 			sourceTree = "<group>";
@@ -118,6 +138,24 @@
 				A922BED11B92940800AD619A /* MoviesViewController.swift */,
 			);
 			name = "View Controllers";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		A98939761B92AE4E00FC2D35 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A98939771B92AE8100FC2D35 /* MovieCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		FAE6A0D85806B0F1B1E920F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B06E7984CDEA0341D984380E /* Pods-Pannd.debug.xcconfig */,
+				0945DFCC54F135E14FDF7BCC /* Pods-Pannd.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,9 +165,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A922BECB1B9293DE00AD619A /* Build configuration list for PBXNativeTarget "Pannd" */;
 			buildPhases = (
+				56A8F889868B74383C95FEA5 /* Check Pods Manifest.lock */,
 				A922BEA81B9293DE00AD619A /* Sources */,
 				A922BEA91B9293DE00AD619A /* Frameworks */,
 				A922BEAA1B9293DE00AD619A /* Resources */,
+				BA5373B0751D56B5C3D33BAA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,6 +255,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		56A8F889868B74383C95FEA5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BA5373B0751D56B5C3D33BAA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pannd/Pods-Pannd-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A922BEA81B9293DE00AD619A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -222,6 +295,7 @@
 			files = (
 				A922BEB21B9293DE00AD619A /* AppDelegate.swift in Sources */,
 				A922BED21B92940800AD619A /* MoviesViewController.swift in Sources */,
+				A98939781B92AE8100FC2D35 /* MovieCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,21 +418,28 @@
 		};
 		A922BECC1B9293DE00AD619A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B06E7984CDEA0341D984380E /* Pods-Pannd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Pannd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pannd/Pannd-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		A922BECD1B9293DE00AD619A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0945DFCC54F135E14FDF7BCC /* Pods-Pannd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Pannd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pannd/Pannd-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -415,6 +496,7 @@
 				A922BECD1B9293DE00AD619A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A922BECE1B9293DE00AD619A /* Build configuration list for PBXNativeTarget "PanndTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +505,7 @@
 				A922BED01B9293DE00AD619A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
