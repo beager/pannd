@@ -23,6 +23,7 @@ class Movie {
     var runtime: Int
     var year: Int
     
+    // Init, set all the things
     init(movie: NSDictionary) {
         self.title = (movie["title"] as? String)!
         self.poster = (movie.valueForKeyPath("posters.thumbnail") as? String)!
@@ -37,6 +38,7 @@ class Movie {
         self.year = (movie["year"] as? Int)!
     }
     
+    // Returns the high quality poster through regex
     func getHighQualityPoster() -> String {
         var range = self.poster.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
         if let range = range {
